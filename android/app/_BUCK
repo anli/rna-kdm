@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.template",
+    package = "com.anlitz.kdm",
 )
 
 android_resource(
     name = "res",
-    package = "com.template",
+    package = "com.anlitz.kdm",
     res = "src/main/res",
 )
 

@@ -1,12 +1,12 @@
 import {StackNavigationOptions} from '@react-navigation/stack';
+import {Screen, Text} from '@ui';
 import React from 'react';
-import {Text, View} from 'react-native';
 
 const Component = () => {
   return (
-    <View>
+    <Screen>
       <Text>App</Text>
-    </View>
+    </Screen>
   );
 };
 

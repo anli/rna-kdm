@@ -10,7 +10,7 @@ export const Screen = ({
 }: {
   component: React.ComponentType<any>;
   options: any;
-  mocks: ReadonlyArray<MockedResponse>;
+  mocks?: ReadonlyArray<MockedResponse>;
 }) => {
   const Stack = createStackNavigator();
 

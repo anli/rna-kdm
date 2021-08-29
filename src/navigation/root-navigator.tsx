@@ -1,11 +1,12 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {createStackNavigator} from '@react-navigation/stack';
-import {HomeScreen, MonsterLevelsScreen} from '@screens';
+import {HomeScreen, MonsterLevelsScreen, ShowdownScreen} from '@screens';
 import React from 'react';
 
 export type RootParamList = {
   Home: undefined;
   MonsterLevels: undefined;
+  Showdown: {monsterLevelId: string};
 };
 
 const Stack = createStackNavigator<RootParamList>();
@@ -24,6 +25,11 @@ export const RootNavigator = () => {
         name="MonsterLevels"
         component={MonsterLevelsScreen.Component}
         options={MonsterLevelsScreen.options}
+      />
+      <Stack.Screen
+        name="Showdown"
+        component={ShowdownScreen.Component}
+        options={ShowdownScreen.options}
       />
     </Stack.Navigator>
   );

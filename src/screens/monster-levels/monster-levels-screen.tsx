@@ -1,3 +1,5 @@
+import {ScreenProps} from '@navigation';
+import {useNavigation} from '@react-navigation/native';
 import {StackNavigationOptions} from '@react-navigation/stack';
 import {Screen} from '@ui';
 import React from 'react';
@@ -10,14 +12,22 @@ import {
 
 const Component = () => {
   const {data} = useMonsterLevelsScreenQuery();
+  const {replace} = useNavigation<ScreenProps['navigation']>();
+
+  const onPresentShowdownScreen = (
+    monsterLevelId: List_MonsterLevelFragment['id'],
+  ) => {
+    replace('Showdown', {monsterLevelId});
+  };
 
   const renderItem = ({item}: {item: List_MonsterLevelFragment}) => {
-    const {name, monster} = item;
+    const {name, monster, id} = item;
     return (
       <List.Item
         title={name}
         description={monster?.name}
         right={props => <List.Icon {...props} icon="chevron-right" />}
+        onPress={() => onPresentShowdownScreen(id)}
       />
     );
   };

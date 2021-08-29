@@ -1,2 +1,2 @@
-export * from './mocked-navigate';
+export * from './react-navigation';
 export * from './screen';

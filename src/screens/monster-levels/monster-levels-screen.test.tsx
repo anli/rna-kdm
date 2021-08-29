@@ -1,5 +1,5 @@
-import {render} from '@testing-library/react-native';
-import {Screen} from '@tests';
+import {fireEvent, render} from '@testing-library/react-native';
+import {mockedReplace, Screen} from '@tests';
 import faker from 'faker';
 import React from 'react';
 import {MonsterLevelsScreen} from './monster-levels-screen';
@@ -28,21 +28,40 @@ const mocks = [
 ];
 
 describe('Monster Levels Screen', () => {
-  describe('API data is loaded', () => {
-    describe('Given I am at Monster Levels Screen', () => {
-      test('When API data is loaded, Then I should see data', async () => {
-        jest.useRealTimers();
-        const {findByText, getByText} = render(
-          <Screen
-            mocks={mocks}
-            component={MonsterLevelsScreen.Component}
-            options={MonsterLevelsScreen.options}
-          />,
-        );
-        expect(await findByText(monsterLevels[0].name)).toBeDefined();
-        expect(getByText(monsterLevels[0].monster.name)).toBeDefined();
-        jest.useFakeTimers();
-      });
+  beforeEach(() => {
+    jest.useRealTimers();
+  });
+
+  afterEach(() => {
+    jest.useFakeTimers();
+  });
+
+  it('Scenario: API data is loaded', async () => {
+    const {findByText, getByText} = render(
+      <Screen
+        mocks={mocks}
+        component={MonsterLevelsScreen.Component}
+        options={MonsterLevelsScreen.options}
+      />,
+    );
+    expect(await findByText(monsterLevels[0].name)).toBeDefined();
+    expect(getByText(monsterLevels[0].monster.name)).toBeDefined();
+  });
+
+  it('Scenario: Press a Monster Level', async () => {
+    const {findByText, getByText} = render(
+      <Screen
+        mocks={mocks}
+        component={MonsterLevelsScreen.Component}
+        options={MonsterLevelsScreen.options}
+      />,
+    );
+    expect(await findByText(monsterLevels[0].name)).toBeDefined();
+
+    fireEvent.press(getByText(monsterLevels[0].monster.name));
+    expect(mockedReplace).toHaveBeenCalledTimes(1);
+    expect(mockedReplace).toBeCalledWith('Showdown', {
+      monsterLevelId: monsterLevels[0].id,
     });
   });
 });

@@ -1,6 +1,7 @@
 Feature: Monster Levels Screen
 
-  Scenario: See Monster Levels Button
+  Scenario: API data is loaded
     Given I am at Monster Levels Screen
-    Then I should see Screen
+    When API data is loaded
+    Then Then I should see data
 

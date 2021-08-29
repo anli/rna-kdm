@@ -1,3 +1,4 @@
+import {ApiProvider} from '@api';
 import {RootNavigator} from '@navigation';
 import {NavigationContainer} from '@react-navigation/native';
 import {ThemeProvider} from '@shopify/restyle';
@@ -9,9 +10,11 @@ export const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <PaperProvider>
-        <NavigationContainer>
-          <RootNavigator />
-        </NavigationContainer>
+        <ApiProvider>
+          <NavigationContainer>
+            <RootNavigator />
+          </NavigationContainer>
+        </ApiProvider>
       </PaperProvider>
     </ThemeProvider>
   );

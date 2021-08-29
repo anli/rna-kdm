@@ -1,6 +1,13 @@
+fragment List_MonsterLevel on MonsterLevel {
+  id
+  name
+  monster {
+    name
+  }
+}
+
 query MonsterLevelsScreen {
   monsterLevels {
-    id
-    name
+    ...List_MonsterLevel
   }
 }

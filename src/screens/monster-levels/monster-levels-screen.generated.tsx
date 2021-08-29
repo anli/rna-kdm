@@ -3,22 +3,43 @@ import * as Apollo from '@apollo/client';
 import {gql} from '@apollo/client';
 
 const defaultOptions = {};
+export type List_MonsterLevelFragment = {
+  __typename?: 'MonsterLevel';
+  id: string;
+  name: string;
+  monster?: Types.Maybe<{__typename?: 'Monster'; name: string}>;
+};
+
 export type MonsterLevelsScreenQueryVariables = Types.Exact<{
   [key: string]: never;
 }>;
 
 export type MonsterLevelsScreenQuery = {
   __typename?: 'Query';
-  monsterLevels: Array<{__typename?: 'MonsterLevel'; id: string; name: string}>;
+  monsterLevels: Array<{
+    __typename?: 'MonsterLevel';
+    id: string;
+    name: string;
+    monster?: Types.Maybe<{__typename?: 'Monster'; name: string}>;
+  }>;
 };
 
-export const MonsterLevelsScreenDocument = gql`
-  query MonsterLevelsScreen {
-    monsterLevels {
-      id
+export const List_MonsterLevelFragmentDoc = gql`
+  fragment List_MonsterLevel on MonsterLevel {
+    id
+    name
+    monster {
       name
     }
   }
+`;
+export const MonsterLevelsScreenDocument = gql`
+  query MonsterLevelsScreen {
+    monsterLevels {
+      ...List_MonsterLevel
+    }
+  }
+  ${List_MonsterLevelFragmentDoc}
 `;
 
 /**

@@ -60,3 +60,8 @@ buck-out/
 
 coverage
 tmp
+
+google-services.json
+GoogleService-Info.plist
+
+.env

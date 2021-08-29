@@ -1,4 +1,4 @@
-import {ScreenProps} from '@navigation';
+import {AuthenticatedScreenProps} from '@navigation';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationOptions} from '@react-navigation/stack';
 import {Screen} from '@ui';
@@ -12,7 +12,7 @@ import {
 
 const Component = () => {
   const {data} = useMonsterLevelsScreenQuery();
-  const {replace} = useNavigation<ScreenProps['navigation']>();
+  const {replace} = useNavigation<AuthenticatedScreenProps['navigation']>();
 
   const onPresentShowdownScreen = (
     monsterLevelId: List_MonsterLevelFragment['id'],

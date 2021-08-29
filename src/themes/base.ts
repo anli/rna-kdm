@@ -43,7 +43,6 @@ export const baseTheme: BaseThemeType = createTheme<BaseThemeType>({
     defaults: {
       flex: 1,
       backgroundColor: 'background',
-      paddingHorizontal: 'm',
     },
   },
   viewVariants: {

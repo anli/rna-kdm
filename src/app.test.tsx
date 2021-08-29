@@ -5,6 +5,6 @@ import {App} from './app';
 describe('App', () => {
   it('App can load', () => {
     const {getByText} = render(<App />);
-    expect(getByText('App')).toBeDefined();
+    expect(getByText('Home')).toBeDefined();
   });
 });

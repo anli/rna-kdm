@@ -1,0 +1,6 @@
+query MonsterLevelsScreen {
+  monsterLevels {
+    id
+    name
+  }
+}

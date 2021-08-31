@@ -1,3 +1,4 @@
+import {mockedSignOut} from '@mocks';
 import {fireEvent, render} from '@testing-library/react-native';
 import {mockedNavigate, Screen} from '@tests';
 import React from 'react';
@@ -11,5 +12,13 @@ describe('Home Screen', () => {
     fireEvent.press(getByText('Monster Levels'));
     expect(mockedNavigate).toHaveBeenCalledTimes(1);
     expect(mockedNavigate).toBeCalledWith('MonsterLevels');
+  });
+
+  it('Scenario: Press Logout Button', async () => {
+    const {getByText} = render(
+      <Screen component={HomeScreen.Component} options={HomeScreen.options} />,
+    );
+    fireEvent.press(getByText('Logout'));
+    expect(mockedSignOut).toHaveBeenCalledTimes(1);
   });
 });

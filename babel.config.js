@@ -1,6 +1,7 @@
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
   plugins: [
+    ['module:react-native-dotenv'],
     [
       'module-resolver',
       {
@@ -17,6 +18,8 @@ module.exports = {
           '.json',
         ],
         alias: {
+          '@mocks': './__mocks__',
+          '@authentication': './src/authentication',
           '@tests': './src/tests',
           '@api': './src/api',
           '@ui': './src/ui',

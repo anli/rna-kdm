@@ -1,12 +1,20 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {createStackNavigator} from '@react-navigation/stack';
-import {HomeScreen, MonsterLevelsScreen, ShowdownScreen} from '@screens';
+import {
+  HomeScreen,
+  MonsterLevelsScreen,
+  SettlementCreateScreen,
+  SettlementScreen,
+  ShowdownScreen,
+} from '@screens';
 import React from 'react';
 
 export type AuthenticatedParamList = {
   Home: undefined;
   MonsterLevels: undefined;
   Showdown: {monsterLevelId: string};
+  SettlementCreate: undefined;
+  Settlement: {settlementId: string};
 };
 
 const Stack = createStackNavigator<AuthenticatedParamList>();
@@ -31,6 +39,16 @@ export const AuthenticatedNavigator = () => {
         name="Showdown"
         component={ShowdownScreen.Component}
         options={ShowdownScreen.options}
+      />
+      <Stack.Screen
+        name="SettlementCreate"
+        component={SettlementCreateScreen.Component}
+        options={SettlementCreateScreen.options}
+      />
+      <Stack.Screen
+        name="Settlement"
+        component={SettlementScreen.Component}
+        options={SettlementScreen.options}
       />
     </Stack.Navigator>
   );

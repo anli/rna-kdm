@@ -1,3 +1,4 @@
+import {MockedProvider} from '@apollo/client/testing';
 import {mockedOnAuthStateChanged} from '@mocks';
 import {render} from '@testing-library/react-native';
 import React from 'react';
@@ -5,7 +6,7 @@ import {App} from './app';
 
 jest.mock('@api', () => ({
   ...jest.requireActual('@api'),
-  ApiProvider: ({children}: any) => <>{children}</>,
+  ApiProvider: ({children}: any) => <MockedProvider>{children}</MockedProvider>,
 }));
 
 describe('App', () => {

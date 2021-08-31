@@ -1,0 +1,12 @@
+fragment List_Settlement on Settlement {
+  id
+  name
+}
+
+query HomeScreen($userId: String) {
+  player(where: {userId: $userId}) {
+    settlements {
+      ...List_Settlement
+    }
+  }
+}

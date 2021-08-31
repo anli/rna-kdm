@@ -1,6 +1,8 @@
 import {MockedProvider, MockedResponse} from '@apollo/client/testing';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {ThemeProvider} from '@shopify/restyle';
+import {theme} from '@themes';
 import React from 'react';
 
 export const Screen = ({
@@ -16,11 +18,17 @@ export const Screen = ({
 
   return (
     <MockedProvider mocks={mocks}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Screen" component={component} options={options} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Screen"
+              component={component}
+              options={options}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
     </MockedProvider>
   );
 };

@@ -29,6 +29,13 @@ const base = {
     s: pxToNumber(tokens.spacingBaseTight),
     xs: pxToNumber(tokens.spacingExtraTight),
   },
+  borderRadii: {
+    l: pxToNumber(tokens.spacingLoose),
+    m: pxToNumber(tokens.spacingBase),
+    none: 0,
+    s: pxToNumber(tokens.spacingBaseTight),
+    xs: pxToNumber(tokens.spacingExtraTight),
+  },
 };
 
 type BaseThemeType = typeof base & {

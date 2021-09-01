@@ -1,7 +1,0 @@
-export const mockedNavigate = jest.fn();
-export const mockedReplace = jest.fn();
-
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'),
-  useNavigation: () => ({navigate: mockedNavigate, replace: mockedReplace}),
-}));

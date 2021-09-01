@@ -1,5 +1,6 @@
+import {mockedReplace} from '@mocks';
 import {fireEvent, render} from '@testing-library/react-native';
-import {mockedReplace, Screen} from '@tests';
+import {Screen} from '@tests';
 import faker from 'faker';
 import React from 'react';
 import {MonsterLevelsScreen} from './monster-levels-screen';

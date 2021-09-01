@@ -10,3 +10,35 @@ query HomeScreen($userId: String) {
     }
   }
 }
+
+mutation CreateSettlement($data: SettlementCreateInput!) {
+  createSettlement(data: $data) {
+    id
+    showdowns {
+      id
+    }
+  }
+}
+
+mutation PublishCreateSettlement(
+  $settlementId: ID!
+  $userId: String!
+  $showdownId: ID!
+) {
+  publishSettlement(where: {id: $settlementId}, to: PUBLISHED) {
+    id
+  }
+  publishPlayer(where: {userId: $userId}, to: PUBLISHED) {
+    id
+  }
+  publishShowdown(where: {id: $showdownId}, to: PUBLISHED) {
+    id
+  }
+  publishManySurvivorsConnection(where: {settlement: {id: $settlementId}}) {
+    edges {
+      node {
+        id
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+fragment List_Showdown on Showdown {
+  id
+  year
+  monsterLevel {
+    name
+    monster {
+      name
+    }
+  }
+}
+
+query SettlementScreen($settlementId: ID!) {
+  settlement(where: {id: $settlementId}) {
+    showdowns {
+      ...List_Showdown
+    }
+  }
+}

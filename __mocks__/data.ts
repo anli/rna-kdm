@@ -30,10 +30,15 @@ export const showdowns = Array.from({length: 1}, () => {
     id: faker.datatype.uuid(),
     year: 0,
     monsterLevel: {
+      __typename: 'MonsterLevel',
       name: faker.lorem.word(),
       monster: {
         name: faker.lorem.word(),
       },
+      movement: faker.datatype.number(10),
+      toughness: faker.datatype.number(10),
+      speedModifier: faker.datatype.number(10),
+      damageModifier: faker.datatype.number(10),
     },
   };
 });

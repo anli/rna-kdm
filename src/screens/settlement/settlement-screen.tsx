@@ -1,5 +1,5 @@
-import {AuthenticatedParamList} from '@navigation';
-import {useRoute} from '@react-navigation/native';
+import {AuthenticatedParamList, AuthenticatedScreenProps} from '@navigation';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {StackNavigationOptions} from '@react-navigation/stack';
 import {Screen} from '@ui';
@@ -11,7 +11,7 @@ import {
   useSettlementScreenQuery,
 } from './settlement-screen.generated';
 
-export type SettlementScreenProps = NativeStackScreenProps<
+type SettlementScreenProps = NativeStackScreenProps<
   AuthenticatedParamList,
   'Settlement'
 >;
@@ -21,6 +21,11 @@ const Component = () => {
     params: {settlementId},
   } = useRoute<SettlementScreenProps['route']>();
   const {data} = useSettlementScreenQuery({variables: {settlementId}});
+  const {navigate} = useNavigation<AuthenticatedScreenProps['navigation']>();
+
+  const onViewShowdown = (showdownId: string) => {
+    navigate('Showdown', {showdownId});
+  };
 
   const renderShowdown = ({item}: {item: List_ShowdownFragment}) => {
     return (
@@ -28,6 +33,7 @@ const Component = () => {
         description={`${item.monsterLevel?.monster?.name} ${item.monsterLevel?.name}`}
         title={`Year ${item.year}`}
         right={props => <List.Icon {...props} icon="chevron-right" />}
+        onPress={() => onViewShowdown(item.id)}
       />
     );
   };

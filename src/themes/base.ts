@@ -49,7 +49,6 @@ export const baseTheme: BaseThemeType = createTheme<BaseThemeType>({
   screenVariants: {
     defaults: {
       flex: 1,
-      backgroundColor: 'background',
     },
   },
   viewVariants: {

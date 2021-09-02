@@ -1,5 +1,5 @@
 Feature: Showdown Screen
 
-  Scenario: Screen is loaded
+  Scenario: Stats is loaded
     Given I am at Showdown Screen
-    Then I should see screen
+    Then I should see stats

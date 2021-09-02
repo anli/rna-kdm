@@ -1,0 +1,15 @@
+fragment Stats_MonsterLevel on MonsterLevel {
+  movement
+  toughness
+  speedModifier
+  damageModifier
+}
+
+query ShowdownScreen($showdownId: ID!) {
+  showdown(where: {id: $showdownId}) {
+    monsterLevel {
+      name
+      ...Stats_MonsterLevel
+    }
+  }
+}

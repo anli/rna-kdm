@@ -12,7 +12,7 @@ import React from 'react';
 export type AuthenticatedParamList = {
   Home: undefined;
   MonsterLevels: undefined;
-  Showdown: {monsterLevelId: string};
+  Showdown: {showdownId: string};
   SettlementCreate: undefined;
   Settlement: {settlementId: string};
 };
